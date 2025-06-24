@@ -5,8 +5,8 @@
   <img src="https://img.shields.io/badge/Cisco-1BA0D7?style=for-the-badge&logo=cisco&logoColor=white" alt="Cisco">
   <img src="https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white" alt="CSS3">
   <img src="https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white" alt="HTML5"><br>
-  <img src="https://img.shields.io/github/last-commit/Gl3nnnn/cisco-css-projects?color=blue&style=flat-square" alt="Last Commit">
-  <img src="https://img.shields.io/github/repo-size/Gl3nnnn/cisco-css-projects?style=flat-square" alt="Repo Size">
+  <img src="https://img.shields.io/github/last-commit/Gl3nnnn/cisco?color=blue&style=flat-square" alt="Last Commit">
+  <img src="https://img.shields.io/github/repo-size/Gl3nnnn/cisco" alt="Repo Size">
 </div>
 
 ---
