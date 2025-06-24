@@ -1,0 +1,729 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TechGadget Pro | Premium Electronics Showcase</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* ===== VARIABLES & RESET ===== */
+        :root {
+            --primary: #2563eb;
+            --primary-dark: #1d4ed8;
+            --secondary: #f97316;
+            --dark: #1e293b;
+            --light: #f8fafc;
+            --gray: #94a3b8;
+            --success: #22c55e;
+            --card-bg: #ffffff;
+            --shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s ease;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', system-ui, sans-serif;
+            background: linear-gradient(135deg, #f0f4f8, #e2e8f0);
+            color: var(--dark);
+            line-height: 1.6;
+            padding-top: 100px;
+            padding-bottom: 100px;
+            min-height: 100vh;
+        }
+        
+        /* ===== HEADER ===== */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 80px;
+            background-image: url('https://images.unsplash.com/photo-1518770660439-4636190af475?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: var(--shadow);
+        }
+        
+        .header-content {
+            background: rgba(30, 41, 59, 0.85);
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 5%;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        
+        .logo i {
+            font-size: 2.2rem;
+            color: var(--secondary);
+        }
+        
+        .logo h1 {
+            color: white;
+            font-size: 1.8rem;
+            letter-spacing: 1px;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+        }
+        
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            padding: 8px 0;
+            position: relative;
+            transition: var(--transition);
+        }
+        
+        nav a:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 3px;
+            background: var(--secondary);
+            transition: var(--transition);
+        }
+        
+        nav a:hover {
+            color: var(--secondary);
+        }
+        
+        nav a:hover:after {
+            width: 100%;
+        }
+        
+        .cart-btn {
+            background: var(--secondary);
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 30px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .cart-btn:hover {
+            background: #ea580c;
+            transform: translateY(-2px);
+        }
+        
+        /* ===== MAIN CONTENT ===== */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 30px;
+        }
+        
+        .intro {
+            text-align: center;
+            margin-bottom: 50px;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .intro h2 {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+            color: var(--dark);
+        }
+        
+        .intro p {
+            color: var(--gray);
+            font-size: 1.1rem;
+        }
+        
+        .highlight {
+            color: var(--primary);
+            font-weight: 600;
+        }
+        
+        /* ===== PRODUCT GRID ===== */
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+            margin-bottom: 60px;
+        }
+        
+        .product {
+            width: 100%;
+            padding: 20px;
+            border: 2px solid #e2e8f0;
+            margin: 10px;
+            background-color: var(--card-bg);
+            border-radius: 12px;
+            overflow: hidden;
+            position: relative;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+        
+        .product:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+            border-color: var(--primary);
+        }
+        
+        .product-image {
+            position: relative;
+            height: 200px;
+            margin-bottom: 20px;
+            border-radius: 8px;
+            overflow: hidden;
+            background: #f1f5f9;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .product-image img {
+            max-height: 80%;
+            max-width: 80%;
+            transition: var(--transition);
+        }
+        
+        .product:hover .product-image img {
+            transform: scale(1.05);
+        }
+        
+        .badge {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: var(--secondary);
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-weight: 600;
+            font-size: 0.85rem;
+            z-index: 10;
+        }
+        
+        .product h3 {
+            font-size: 1.4rem;
+            margin-bottom: 10px;
+            color: var(--dark);
+        }
+        
+        .product p {
+            color: var(--gray);
+            margin-bottom: 20px;
+            min-height: 60px;
+        }
+        
+        .price {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 15px;
+        }
+        
+        .btn {
+            display: inline-block;
+            background: var(--primary);
+            color: white;
+            padding: 12px 25px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: var(--transition);
+            border: none;
+            cursor: pointer;
+            width: 100%;
+            text-align: center;
+        }
+        
+        .btn:hover {
+            background: var(--primary-dark);
+            transform: translateY(-3px);
+        }
+        
+        /* ===== PRODUCT SPECS TABLE ===== */
+        .specs-section {
+            background: var(--card-bg);
+            border-radius: 12px;
+            padding: 30px;
+            margin-bottom: 60px;
+            box-shadow: var(--shadow);
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 30px;
+            color: var(--dark);
+            font-size: 1.8rem;
+            position: relative;
+            padding-bottom: 15px;
+        }
+        
+        .section-title:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: var(--primary);
+            border-radius: 2px;
+        }
+        
+        .product-specs {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 0 auto;
+            max-width: 800px;
+        }
+        
+        .product-specs th {
+            background: var(--primary);
+            color: white;
+            padding: 15px;
+            text-align: left;
+        }
+        
+        .product-specs td, .product-specs th {
+            border: 1px solid #e2e8f0;
+            padding: 12px 15px;
+        }
+        
+        .product-specs tr:nth-child(even) {
+            background-color: #f1f5f9;
+        }
+        
+        .product-specs tr:hover {
+            background-color: #dbeafe;
+        }
+        
+        /* ===== CONTACT FORM ===== */
+        .contact-section {
+            background: var(--card-bg);
+            border-radius: 12px;
+            padding: 40px;
+            box-shadow: var(--shadow);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        .contact-form {
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+        }
+        
+        fieldset {
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            padding: 25px;
+            position: relative;
+        }
+        
+        legend {
+            font-weight: 700;
+            font-size: 1.2rem;
+            color: var(--dark);
+            padding: 0 15px;
+            position: absolute;
+            top: -15px;
+            left: 20px;
+            background: var(--card-bg);
+            border-bottom: 3px solid var(--primary);
+        }
+        
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+        
+        label {
+            font-weight: 500;
+            color: var(--dark);
+        }
+        
+        input, textarea, select {
+            padding: 14px;
+            border: 1px solid #cbd5e1;
+            border-radius: 8px;
+            font-family: inherit;
+            font-size: 1rem;
+            transition: var(--transition);
+        }
+        
+        input:focus, textarea:focus, select:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.2);
+        }
+        
+        .submit-btn {
+            background: var(--success);
+            color: white;
+            padding: 16px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: var(--transition);
+            margin-top: 10px;
+        }
+        
+        .submit-btn:hover {
+            background: #16a34a;
+            transform: translateY(-3px);
+        }
+        
+        /* ===== FOOTER ===== */
+        footer {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background: var(--dark);
+            color: white;
+            padding: 20px 0;
+            text-align: center;
+            z-index: 1000;
+        }
+        
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .copyright {
+            font-size: 0.9rem;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 20px;
+        }
+        
+        .social-links a {
+            color: white;
+            font-size: 1.2rem;
+            transition: var(--transition);
+        }
+        
+        .social-links a:hover {
+            color: var(--secondary);
+            transform: translateY(-3px);
+        }
+        
+        /* ===== RESPONSIVE DESIGN ===== */
+        @media (max-width: 900px) {
+            .products-grid {
+                grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            }
+            
+            .header-content {
+                flex-direction: column;
+                padding: 10px;
+                height: auto;
+            }
+            
+            nav ul {
+                margin: 15px 0;
+                gap: 15px;
+            }
+        }
+        
+        @media (max-width: 600px) {
+            body {
+                padding-top: 150px;
+            }
+            
+            header {
+                height: auto;
+            }
+            
+            nav ul {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            .contact-section {
+                padding: 20px;
+            }
+            
+            .footer-content {
+                flex-direction: column;
+                gap: 15px;
+            }
+        }
+        
+        /* ===== VISIBILITY DEMO ===== */
+        #hidden-details {
+            visibility: hidden;
+            height: 0;
+            opacity: 0;
+            transition: var(--transition);
+        }
+        
+        .toggle-btn {
+            display: block;
+            margin: 20px auto;
+            background: var(--gray);
+            width: 200px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header with background image -->
+    <header>
+        <div class="header-content">
+            <div class="logo">
+                <i class="fas fa-microchip"></i>
+                <h1>TechGadget Pro</h1>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">Products</a></li>
+                    <li><a href="#">Features</a></li>
+                    <li><a href="#">Reviews</a></li>
+                    <li><a href="#">Support</a></li>
+                </ul>
+            </nav>
+            <button class="cart-btn">
+                <i class="fas fa-shopping-cart"></i>
+                <span>Cart (3)</span>
+            </button>
+        </div>
+    </header>
+
+    <main class="container">
+        <!-- Introduction Section -->
+        <section class="intro">
+            <h2>Premium <span class="highlight">Tech Gadgets</span> for the Modern Lifestyle</h2>
+            <p>Discover our cutting-edge collection of electronics designed to enhance your digital experience with superior performance and innovative features.</p>
+        </section>
+
+        <!-- Product Grid -->
+        <section class="products-grid">
+            <div class="product">
+                <div class="product-image">
+                    <img src="https://images.unsplash.com/photo-1546868871-7041f2a55e12?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Smart Watch Pro">
+                    <span class="badge">New</span>
+                </div>
+                <h3>Smart Watch Pro</h3>
+                <p>Advanced health tracking and seamless connectivity with your smartphone.</p>
+                <div class="price">$249.99</div>
+                <button class="btn">Add to Cart</button>
+            </div>
+
+            <div class="product">
+                <div class="product-image">
+                    <img src="https://images.unsplash.com/photo-1607853554439-0069ec0f29b9?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Wireless Earbuds">
+                    <span class="badge">Best Seller</span>
+                </div>
+                <h3>Wireless Earbuds Elite</h3>
+                <p>Crystal clear sound with noise cancellation technology for immersive audio.</p>
+                <div class="price">$179.99</div>
+                <button class="btn">Add to Cart</button>
+            </div>
+
+            <div class="product">
+                <div class="product-image">
+                    <img src="https://images.unsplash.com/photo-1468436139062-f60a71c5c892?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Smartphone X">
+                    <span class="badge">Premium</span>
+                </div>
+                <h3>Smartphone X</h3>
+                <p>Professional-grade camera system and all-day battery life in a sleek design.</p>
+                <div class="price">$899.99</div>
+                <button class="btn">Add to Cart</button>
+            </div>
+        </section>
+
+        <!-- Product Specifications Table -->
+        <section class="specs-section">
+            <h2 class="section-title">Technical Specifications</h2>
+            <table class="product-specs">
+                <thead>
+                    <tr>
+                        <th>Feature</th>
+                        <th>Smart Watch Pro</th>
+                        <th>Wireless Earbuds Elite</th>
+                        <th>Smartphone X</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Battery Life</td>
+                        <td>7 days</td>
+                        <td>8 hours (30 with case)</td>
+                        <td>24 hours</td>
+                    </tr>
+                    <tr>
+                        <td>Connectivity</td>
+                        <td>Bluetooth 5.2, Wi-Fi</td>
+                        <td>Bluetooth 5.3</td>
+                        <td>5G, Wi-Fi 6E</td>
+                    </tr>
+                    <tr>
+                        <td>Water Resistance</td>
+                        <td>5 ATM</td>
+                        <td>IPX7</td>
+                        <td>IP68</td>
+                    </tr>
+                    <tr>
+                        <td>Display</td>
+                        <td>1.7" AMOLED</td>
+                        <td>N/A</td>
+                        <td>6.7" Super Retina</td>
+                    </tr>
+                    <tr>
+                        <td>Storage</td>
+                        <td>8GB</td>
+                        <td>N/A</td>
+                        <td>256GB</td>
+                    </tr>
+                    <tr>
+                        <td>Weight</td>
+                        <td>42g</td>
+                        <td>5g (each bud)</td>
+                        <td>198g</td>
+                    </tr>
+                </tbody>
+            </table>
+            
+            <!-- Hidden details section -->
+            <button class="btn toggle-btn">Show Advanced Details</button>
+            <div id="hidden-details">
+                <p>Additional technical information would appear here when toggled.</p>
+            </div>
+        </section>
+
+        <!-- Contact Form -->
+        <section class="contact-section">
+            <h2 class="section-title">Contact Us</h2>
+            <form class="contact-form">
+                <fieldset>
+                    <legend>Your Information</legend>
+                    <div class="form-group">
+                        <label for="name">Full Name</label>
+                        <input type="text" id="name" required placeholder="Enter your name">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="email">Email Address</label>
+                        <input type="email" id="email" required placeholder="Enter your email">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="phone">Phone Number</label>
+                        <input type="tel" id="phone" placeholder="Enter your phone">
+                    </div>
+                </fieldset>
+                
+                <fieldset>
+                    <legend>Your Inquiry</legend>
+                    <div class="form-group">
+                        <label for="product">Product of Interest</label>
+                        <select id="product">
+                            <option value="">Select a product</option>
+                            <option value="watch">Smart Watch Pro</option>
+                            <option value="earbuds">Wireless Earbuds Elite</option>
+                            <option value="phone">Smartphone X</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="message">Message</label>
+                        <textarea id="message" rows="5" placeholder="How can we help you?"></textarea>
+                    </div>
+                </fieldset>
+                
+                <button type="submit" class="submit-btn">Send Message</button>
+            </form>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="copyright">© 2023 TechGadget Pro. All rights reserved.</div>
+            <div class="social-links">
+                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-youtube"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Toggle hidden details
+        document.querySelector('.toggle-btn').addEventListener('click', function() {
+            const details = document.getElementById('hidden-details');
+            const isVisible = details.style.visibility === 'visible';
+            
+            if (isVisible) {
+                details.style.visibility = 'hidden';
+                details.style.height = '0';
+                details.style.opacity = '0';
+                this.textContent = 'Show Advanced Details';
+            } else {
+                details.style.visibility = 'visible';
+                details.style.height = 'auto';
+                details.style.opacity = '1';
+                this.textContent = 'Hide Advanced Details';
+            }
+        });
+        
+        // Form validation
+        const contactForm = document.querySelector('.contact-form');
+        contactForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Thank you for your message! We will contact you soon.');
+            this.reset();
+        });
+        
+        // Product hover effect enhancement
+        const products = document.querySelectorAll('.product');
+        products.forEach(product => {
+            product.addEventListener('mouseenter', function() {
+                this.style.borderColor = 'var(--primary)';
+            });
+            
+            product.addEventListener('mouseleave', function() {
+                this.style.borderColor = '#e2e8f0';
+            });
+        });
+    </script>
+</body>
+</html>
