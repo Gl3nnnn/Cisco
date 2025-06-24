@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tech Insights | Responsive Blog</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+     
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            background: linear-gradient(135deg, #1a2a6c, #b21f1f, #1a2a6c);
+            background-size: 400% 400%;
+            animation: gradientBG 15s ease infinite;
+            color: #333;
+            padding: 20px;
+        }
+        
+        @keyframes gradientBG {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        
+     
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 30px auto;
+            padding: 25px;
+            background-color: white;
+            border: 1px solid #ddd;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+        }
+        
+
+        header {
+            background: linear-gradient(to right, #2c3e50, #4a6491);
+            color: white;
+            padding: 40px 30px;
+            text-align: center;
+            margin-bottom: 35px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        header::before {
+            content: "";
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0) 70%);
+            transform: rotate(30deg);
+        }
+        
+        header h1 {
+            font-size: 3.2rem;
+            margin-bottom: 12px;
+            position: relative;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        
+        header p {
+            font-size: 1.3rem;
+            max-width: 700px;
+            margin: 0 auto;
+            opacity: 0.9;
+            position: relative;
+        }
+        
+        nav {
+            background: linear-gradient(to right, #3498db, #2c3e50);
+            border-radius: 8px;
+            margin-bottom: 35px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+            justify-content: center;
+            padding: 15px;
+            flex-wrap: wrap;
+        }
+        
+        nav li {
+            margin: 0 15px;
+        }
+        
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+            padding: 10px 15px;
+            border-radius: 6px;
+            transition: all 0.3s ease;
+            display: block;
+        }
+        
+        nav a:hover {
+            background: rgba(255,255,255,0.2);
+            transform: translateY(-2px);
+        }
+        
+    
+        .row {
+            margin: 0 -15px;
+        }
+        
+        .column {
+            float: left;
+            width: 30%;
+            margin: 0 1.66%;
+            background: linear-gradient(to bottom, #f9f9f9, #eef2f7);
+            padding: 25px;
+            border-radius: 10px;
+            transition: all 0.4s ease;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+            margin-bottom: 30px;
+            border: 1px solid #eaeaea;
+        }
+        
+        .column:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 12px 25px rgba(0,0,0,0.15);
+            background: linear-gradient(to bottom, #ffffff, #f0f5ff);
+        }
+        
+
+        .clearfix::after {
+            content: "";
+            display: table;
+            clear: both;
+        }
+        
+
+        .post {
+            margin-bottom: 30px;
+            padding-bottom: 25px;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .post:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+        
+        .post h2 {
+            font-size: 1.7rem;
+            margin-bottom: 15px;
+            color: #2c3e50;
+            position: relative;
+            padding-bottom: 12px;
+        }
+        
+        .post h2::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background: #3498db;
+            border-radius: 3px;
+        }
+        
+        .post p {
+            margin-bottom: 20px;
+            color: #444;
+        }
+        
+        .post img {
+            float: left;
+            width: 50%;
+            height: 200px;
+            object-fit: cover;
+            margin: 0 20px 15px 0;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+        
+        .post img:hover {
+            transform: scale(1.03);
+        }
+        
+        .post::after {
+            content: "";
+            display: table;
+            clear: both;
+        }
+        
+        .meta {
+            display: flex;
+            align-items: center;
+            font-size: 0.9rem;
+            color: #7f8c8d;
+            margin-top: 15px;
+        }
+        
+        .meta i {
+            margin-right: 8px;
+            color: #3498db;
+        }
+        
+        .category {
+            display: inline-block;
+            background: #e74c3c;
+            color: white;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+        
+        .btn {
+            display: inline-block;
+            background: #3498db;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+        
+        .btn:hover {
+            background: #2980b9;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        /* ===== Footer ===== */
+        footer {
+            text-align: center;
+            padding: 30px;
+            margin-top: 40px;
+            background: linear-gradient(to right, #2c3e50, #1a2a6c);
+            border-radius: 10px;
+            color: rgba(255,255,255,0.8);
+        }
+        
+        .social-links {
+            display: flex;
+            justify-content: center;
+            margin: 20px 0;
+        }
+        
+        .social-links a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 45px;
+            height: 45px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 50%;
+            margin: 0 10px;
+            color: white;
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+        }
+        
+        .social-links a:hover {
+            background: #3498db;
+            transform: translateY(-5px);
+        }
+        
+   
+        @media (max-width: 900px) {
+            .column {
+                width: 47%;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .column {
+                width: 100%;
+                float: none;
+                margin: 0 0 30px 0;
+            }
+            
+            header h1 {
+                font-size: 2.5rem;
+            }
+            
+            nav ul {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            nav li {
+                margin: 8px 0;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .container {
+                width: 95%;
+                padding: 15px;
+            }
+            
+            .post img {
+                width: 100%;
+                float: none;
+                margin: 0 0 20px 0;
+            }
+            
+            header {
+                padding: 30px 15px;
+            }
+            
+            header h1 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1><i class="fas fa-laptop-code"></i> Tech Insights</h1>
+            <p>Cutting-edge technology news, analysis, and trends</p>
+        </header>
+        
+        <nav>
+            <ul>
+                <li><a href="#"><i class="fas fa-home"></i> Home</a></li>
+                <li><a href="#"><i class="fas fa-microchip"></i> AI & ML</a></li>
+                <li><a href="#"><i class="fas fa-code"></i> Web Dev</a></li>
+                <li><a href="#"><i class="fas fa-shield-alt"></i> Cybersecurity</a></li>
+                <li><a href="#"><i class="fas fa-cloud"></i> Cloud</a></li>
+                <li><a href="#"><i class="fas fa-mobile-alt"></i> Mobile</a></li>
+            </ul>
+        </nav>
+        
+        <div class="row">
+            <div class="column">
+                <div class="post">
+                    <span class="category">Artificial Intelligence</span>
+                    <h2>AI Revolution 2023</h2>
+                    <img src="https://source.unsplash.com/random/600x400/?ai,technology" alt="AI Technology">
+                    <p>Artificial intelligence is transforming industries at an unprecedented pace. This year has seen breakthroughs in natural language processing that are changing how we interact with machines.</p>
+                    <p>From healthcare diagnostics to autonomous vehicles, AI applications are becoming increasingly sophisticated and integrated into our daily lives.</p>
+                    <div class="meta">
+                        <i class="far fa-calendar"></i> June 15, 2023 &nbsp; 
+                        <i class="far fa-clock"></i> 5 min read
+                    </div>
+                    <a href="#" class="btn">Read More</a>
+                </div>
+                
+                <div class="post">
+                    <span class="category">Quantum Computing</span>
+                    <h2>Quantum Computing Advances</h2>
+                    <img src="https://source.unsplash.com/random/600x400/?quantum,computer" alt="Quantum Computer">
+                    <p>Recent developments in quantum computing suggest we may achieve quantum supremacy faster than anticipated. Major tech companies are racing to build the first commercially viable quantum computer.</p>
+                    <div class="meta">
+                        <i class="far fa-calendar"></i> June 10, 2023 &nbsp; 
+                        <i class="far fa-clock"></i> 4 min read
+                    </div>
+                    <a href="#" class="btn">Read More</a>
+                </div>
+            </div>
+            
+            <div class="column">
+                <div class="post">
+                    <span class="category">Web Development</span>
+                    <h2>Web Development Trends</h2>
+                    <img src="https://source.unsplash.com/random/600x400/?web,development" alt="Web Development">
+                    <p>The landscape of web development continues to evolve rapidly. New frameworks and tools are emerging that make responsive design more efficient and accessible than ever before.</p>
+                    <p>JavaScript frameworks like React and Vue continue to dominate, while new approaches to CSS are simplifying complex layouts.</p>
+                    <div class="meta">
+                        <i class="far fa-calendar"></i> June 12, 2023 &nbsp; 
+                        <i class="far fa-clock"></i> 6 min read
+                    </div>
+                    <a href="#" class="btn">Read More</a>
+                </div>
+                
+                <div class="post">
+                    <span class="category">Cybersecurity</span>
+                    <h2>Cybersecurity in 2023</h2>
+                    <img src="https://source.unsplash.com/random/600x400/?security,cyber" alt="Cybersecurity">
+                    <p>With increasing digital threats, cybersecurity has never been more critical. This article explores the latest defense strategies and emerging threats in the cybersecurity landscape.</p>
+                    <p>From ransomware attacks to state-sponsored hacking, organizations must be more vigilant than ever.</p>
+                    <div class="meta">
+                        <i class="far fa-calendar"></i> June 8, 2023 &nbsp; 
+                        <i class="far fa-clock"></i> 7 min read
+                    </div>
+                    <a href="#" class="btn">Read More</a>
+                </div>
+            </div>
+            
+            <div class="column">
+                <div class="post">
+                    <span class="category">Cloud Computing</span>
+                    <h2>Cloud Infrastructure Update</h2>
+                    <img src="https://source.unsplash.com/random/600x400/?cloud,server" alt="Cloud Computing">
+                    <p>Major cloud providers have announced significant upgrades to their infrastructure services. These changes promise improved performance, better security, and reduced costs for enterprise users.</p>
+                    <p>Multi-cloud strategies are becoming the norm as businesses seek to avoid vendor lock-in and maximize flexibility.</p>
+                    <div class="meta">
+                        <i class="far fa-calendar"></i> June 5, 2023 &nbsp; 
+                        <i class="far fa-clock"></i> 5 min read
+                    </div>
+                    <a href="#" class="btn">Read More</a>
+                </div>
+                
+                <div class="post">
+                    <span class="category">Remote Work</span>
+                    <h2>Future of Remote Work Tech</h2>
+                    <img src="https://source.unsplash.com/random/600x400/?remote,work" alt="Remote Work">
+                    <p>As remote work becomes permanent for many companies, new technologies are emerging to support distributed teams. We examine the tools that are defining the future of digital collaboration.</p>
+                    <p>Virtual reality meetings, AI-powered productivity tools, and advanced cybersecurity for home offices are just some of the innovations shaping this space.</p>
+                    <div class="meta">
+                        <i class="far fa-calendar"></i> June 2, 2023 &nbsp; 
+                        <i class="far fa-clock"></i> 8 min read
+                    </div>
+                    <a href="#" class="btn">Read More</a>
+                </div>
+            </div>
+            
+            <div class="clearfix"></div>
+        </div>
+        
+        <footer>
+            <h3>Tech Insights Blog</h3>
+            <p>Your trusted source for technology news and analysis</p>
+            
+            <div class="social-links">
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                <a href="#"><i class="fab fa-github"></i></a>
+                <a href="#"><i class="fab fa-youtube"></i></a>
+            </div>
+            
+            <p>&copy; 2023 Tech Insights Blog | All Rights Reserved</p>
+            <p>Contact: info@techinsights.blog | Privacy Policy | Terms of Service</p>
+        </footer>
+    </div>
+
+    <script>
+   
+        document.addEventListener('DOMContentLoaded', function() {
+            const columns = document.querySelectorAll('.column');
+            const options = {
+                threshold: 0.1
+            };
+            
+            const observer = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, options);
+            
+            columns.forEach(column => {
+                column.style.opacity = '0';
+                column.style.transform = 'translateY(20px)';
+                column.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+                observer.observe(column);
+            });
+            
+  
+            const techFacts = [
+                "Did you know: The first computer bug was an actual moth stuck in a relay!",
+                "Tech fact: Over 6,000 new computer viruses are released every month.",
+                "Fun fact: The first computer mouse was made of wood.",
+                "Tech insight: 90% of the world's data was created in the last two years.",
+                "Did you know: The first website is still online: http://info.cern.ch"
+            ];
+            
+            const factElement = document.createElement('p');
+            factElement.style.marginTop = '15px';
+            factElement.style.fontStyle = 'italic';
+            factElement.textContent = techFacts[Math.floor(Math.random() * techFacts.length)];
+            document.querySelector('footer').appendChild(factElement);
+        });
+    </script>
+</body>
+</html>
