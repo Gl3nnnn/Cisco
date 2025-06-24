@@ -1,0 +1,696 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Feline Portfolio | Cat Lover & Developer</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Nunito:wght@300;400;700&display=swap" rel="stylesheet">
+    <style>
+        /* ===== VARIABLES & RESET ===== */
+        :root {
+            --primary: #6D4C3D;
+            --secondary: #F9A825;
+            --accent: #8BC34A;
+            --light: #F5F0E6;
+            --dark: #2E1A0F;
+            --gray: #9E9E9E;
+            --transition: all 0.4s ease;
+            --shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Nunito', sans-serif;
+            background-color: #f8f5f0; /* Light gray background (HEX) */
+            color: #333;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        
+        /* ===== HEADER ===== */
+        header {
+            background: 
+                linear-gradient(rgba(220, 20, 60, 0.85), rgba(178, 34, 34, 0.9)), /* Red shade using RGB */
+                url('https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba?ixlib=rb-4.0.3&auto=format&fit=crop&w=1800&q=80') center/cover no-repeat;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 20px;
+            position: relative;
+        }
+        
+        .header-content {
+            max-width: 800px;
+            z-index: 2;
+        }
+        
+        h1 {
+            font-family: 'Poppins', sans-serif;
+            font-size: 4.5rem;
+            color: rgb(152, 251, 152); /* Shade of green (RGB) */
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+            animation: fadeIn 1.5s ease;
+        }
+        
+        .tagline {
+            font-size: 1.8rem;
+            color: white;
+            margin-bottom: 30px;
+            animation: fadeIn 2s ease;
+        }
+        
+        .cat-icon {
+            font-size: 3rem;
+            margin: 20px 0;
+            color: var(--light);
+            animation: bounce 2s infinite;
+        }
+        
+        /* ===== NAVIGATION ===== */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: rgba(46, 26, 15, 0.95);
+            padding: 20px 0;
+            z-index: 1000;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: white;
+        }
+        
+        .logo i {
+            color: var(--secondary);
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+        }
+        
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-size: 1.1rem;
+            font-weight: 600;
+            padding: 8px 0;
+            position: relative;
+            transition: var(--transition);
+        }
+        
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 3px;
+            background: var(--secondary);
+            transition: var(--transition);
+        }
+        
+        .nav-links a:hover {
+            color: var(--secondary);
+        }
+        
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+        
+        /* ===== SECTIONS ===== */
+        section {
+            padding: 100px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        h2 {
+            font-family: 'Poppins', sans-serif;
+            font-size: 2.5rem;
+            color: hsl(220, 100%, 40%); /* Shade of blue (HSL) */
+            margin-bottom: 50px;
+            text-align: center;
+            position: relative;
+            font-style: italic; /* Italic */
+            text-decoration: underline; /* Underlined */
+            text-decoration-color: var(--secondary);
+            text-underline-offset: 10px;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: var(--secondary);
+        }
+        
+        p {
+            font-size: 18px; /* 18px font size */
+            margin-bottom: 20px;
+            color: var(--dark);
+            line-height: 1.8;
+        }
+        
+        /* ===== SKILLS SECTION ===== */
+        .skills-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+        
+        .skill-card {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+        
+        .skill-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+        }
+        
+        .skill-card h3 {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: var(--primary);
+            margin-bottom: 20px;
+            font-size: 1.5rem;
+        }
+        
+        .skill-card h3 i {
+            color: var(--accent);
+        }
+        
+        .skill-card ul {
+            list-style-type: square; /* Square list style */
+            padding-left: 20px;
+        }
+        
+        .skill-card li {
+            margin-bottom: 12px;
+            line-height: 1.6; /* Line height 1.6 */
+            padding-left: 10px; /* 10px padding left */
+            color: var(--dark);
+            font-size: 1.1rem;
+        }
+        
+        /* ===== PROJECTS SECTION ===== */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 40px;
+            margin-top: 50px;
+        }
+        
+        .project-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+        
+        .project-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+        }
+        
+        .project-img {
+            height: 250px;
+            overflow: hidden;
+        }
+        
+        .project-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+            border-radius: 10px; /* Rounded corners */
+            max-width: 600px; /* Max width 600px */
+            box-shadow: 5px 5px 10px gray; /* Box shadow */
+        }
+        
+        .project-card:hover .project-img img {
+            transform: scale(1.1);
+        }
+        
+        .project-content {
+            padding: 25px;
+        }
+        
+        .project-content h3 {
+            color: var(--primary);
+            margin-bottom: 15px;
+            font-size: 1.6rem;
+        }
+        
+        .project-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .btn {
+            display: inline-block;
+            background: var(--primary);
+            color: white;
+            padding: 12px 25px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: var(--transition);
+        }
+        
+        .btn:hover {
+            background: var(--accent);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        /* ===== CONTACT SECTION ===== */
+        .contact-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 50px;
+            margin-top: 50px;
+        }
+        
+        .contact-info {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: var(--shadow);
+        }
+        
+        .contact-info h3 {
+            color: var(--primary);
+            margin-bottom: 30px;
+            font-size: 1.8rem;
+        }
+        
+        .contact-details {
+            list-style: none;
+        }
+        
+        .contact-details li {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 25px;
+            font-size: 1.1rem;
+            color: var(--dark);
+        }
+        
+        .contact-details i {
+            width: 50px;
+            height: 50px;
+            background: var(--light);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.3rem;
+            color: var(--primary);
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 30px;
+        }
+        
+        .social-links a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 45px;
+            height: 45px;
+            background: var(--primary);
+            border-radius: 50%;
+            color: white;
+            font-size: 1.3rem;
+            transition: var(--transition);
+        }
+        
+        .social-links a:hover {
+            background: var(--accent);
+            transform: translateY(-5px);
+        }
+        
+        /* ===== HYPERLINKS ===== */
+        a {
+            color: #00008B; /* Dark blue */
+        }
+        
+        a:visited {
+            color: #800080; /* Purple */
+        }
+        
+        a:hover {
+            color: #FF0000; /* Red */
+        }
+        
+        /* ===== FOOTER ===== */
+        footer {
+            background: var(--dark);
+            color: white;
+            text-align: center;
+            padding: 40px 20px;
+            margin-top: 50px;
+        }
+        
+        .footer-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .footer-logo {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            color: var(--secondary);
+        }
+        
+        .copyright {
+            margin-top: 30px;
+            color: var(--gray);
+            font-size: 1.1rem;
+        }
+        
+        /* ===== ANIMATIONS ===== */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-15px); }
+        }
+        
+        /* ===== RESPONSIVE DESIGN ===== */
+        @media (max-width: 900px) {
+            h1 {
+                font-size: 3.5rem;
+            }
+            
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .nav-links {
+                gap: 15px;
+            }
+        }
+        
+        @media (max-width: 600px) {
+            h1 {
+                font-size: 2.8rem;
+            }
+            
+            .tagline {
+                font-size: 1.4rem;
+            }
+            
+            .nav-container {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            .nav-links {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            section {
+                padding: 60px 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <div class="logo">
+                <i class="fas fa-cat"></i>
+                <span>Whiskers Portfolio</span>
+            </div>
+            <ul class="nav-links">
+                <li><a href="#about">About</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Header -->
+    <header>
+        <div class="header-content">
+            <h1>Whiskers McGee</h1>
+            <div class="cat-icon">
+                <i class="fas fa-paw"></i>
+            </div>
+            <p class="tagline">Cat Lover & Front-End Developer</p>
+            <p>Creating purr-fect web experiences with feline grace</p>
+        </div>
+    </header>
+
+    <!-- About Section -->
+    <section id="about">
+        <h2 class="section-title">About Meow</h2>
+        <div class="about-content">
+            <p>Hello! I'm Whiskers, a passionate front-end developer with a love for all things feline. With over 5 years of experience in creating beautiful and functional websites, I combine my technical skills with my passion for cats to deliver unique digital experiences.</p>
+            <p>When I'm not coding, you can find me volunteering at the local cat shelter, fostering kittens, or photographing cats in my neighborhood. My mission is to create web experiences that are as delightful as a cat's purr.</p>
+            <p>My approach to web development is inspired by cats: curious, meticulous, and always landing on my feet when challenges arise. I believe in creating websites that are accessible, responsive, and enjoyable for all users.</p>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills">
+        <h2 class="section-title">My Cat Skills</h2>
+        <div class="skills-container">
+            <div class="skill-card">
+                <h3><i class="fas fa-code"></i> Development Skills</h3>
+                <ul>
+                    <li>HTML5 & CSS3 (Responsive Design)</li>
+                    <li>JavaScript & ES6+</li>
+                    <li>React & Vue.js</li>
+                    <li>CSS Frameworks (Tailwind, Bootstrap)</li>
+                    <li>Git & GitHub</li>
+                    <li>Web Accessibility</li>
+                </ul>
+            </div>
+            <div class="skill-card">
+                <h3><i class="fas fa-paw"></i> Cat Expertise</h3>
+                <ul>
+                    <li>Feline Behavior Analysis</li>
+                    <li>Cat Photography</li>
+                    <li>Kitten Socialization</li>
+                    <li>Cat Health & Nutrition</li>
+                    <li>Cat Toy Design</li>
+                    <li>Cat Cafe Management</li>
+                </ul>
+            </div>
+            <div class="skill-card">
+                <h3><i class="fas fa-tools"></i> Design & Tools</h3>
+                <ul>
+                    <li>UI/UX Design Principles</li>
+                    <li>Adobe Creative Suite</li>
+                    <li>Figma & Sketch</li>
+                    <li>Animation & Micro-interactions</li>
+                    <li>Performance Optimization</li>
+                    <li>Cross-browser Compatibility</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects">
+        <h2 class="section-title">Purr-jects</h2>
+        <div class="projects-grid">
+            <div class="project-card">
+                <div class="project-img">
+                    <img src="https://images.unsplash.com/photo-1543852786-1cf6624b9987?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Cat Adoption Website">
+                </div>
+                <div class="project-content">
+                    <h3>Pawsome Adoptions</h3>
+                    <p>A responsive website for a cat adoption center featuring searchable profiles, adoption application forms, and educational resources about cat care.</p>
+                    <div class="project-links">
+                        <a href="#" class="btn">Live Demo</a>
+                        <a href="#" class="btn">GitHub</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="project-card">
+                <div class="project-img">
+                    <img src="https://images.unsplash.com/photo-1573865526739-10659fec78a5?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Cat Cafe App">
+                </div>
+                <div class="project-content">
+                    <h3>Meow Cafe App</h3>
+                    <p>Mobile application for a cat cafe featuring reservation system, cat profiles, loyalty program, and menu ordering with real-time updates.</p>
+                    <div class="project-links">
+                        <a href="#" class="btn">Live Demo</a>
+                        <a href="#" class="btn">GitHub</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="project-card">
+                <div class="project-img">
+                    <img src="https://images.unsplash.com/photo-1519052537078-e6302a4968d4?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Cat Health Tracker">
+                </div>
+                <div class="project-content">
+                    <h3>Feline Health Tracker</h3>
+                    <p>Web application for cat owners to track their pet's health records, vaccination schedules, and set medication reminders with vet integration.</p>
+                    <div class="project-links">
+                        <a href="#" class="btn">Live Demo</a>
+                        <a href="#" class="btn">GitHub</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact">
+        <h2 class="section-title">Get in Touch</h2>
+        <div class="contact-container">
+            <div class="contact-info">
+                <h3>Contact Information</h3>
+                <ul class="contact-details">
+                    <li>
+                        <i class="fas fa-envelope"></i>
+                        <span>whiskers@catportfolio.dev</span>
+                    </li>
+                    <li>
+                        <i class="fas fa-phone"></i>
+                        <span>+1 (555) MEOW-NOW</span>
+                    </li>
+                    <li>
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span>123 Purrington Avenue, Cat City</span>
+                    </li>
+                </ul>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-github"></i></a>
+                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+            
+            <div class="contact-info">
+                <h3>Adoption Inquiry</h3>
+                <p>Interested in adopting a cat? I volunteer with several local shelters and can help match you with your perfect feline companion.</p>
+                <a href="#" class="btn" style="margin-top: 20px;">Adoption Form</a>
+                
+                <h3 style="margin-top: 30px;">Cat Photography</h3>
+                <p>Need professional photos of your feline friend? I specialize in cat photography that captures their unique personality.</p>
+                <a href="#" class="btn" style="margin-top: 20px;">View Portfolio</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-logo">
+                <i class="fas fa-cat"></i>
+            </div>
+            <p>"In ancient times cats were worshipped as gods; they have not forgotten this." - Terry Pratchett</p>
+            <div class="social-links" style="justify-content: center; margin: 30px 0;">
+                <a href="#"><i class="fab fa-github"></i></a>
+                <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+            </div>
+            <p class="copyright">© 2023 Whiskers McGee. All rights reserved. Made with <i class="fas fa-heart" style="color: #ff6b6b;"></i> and cat hair.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    window.scrollTo({
+                        top: target.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+        
+        // Header scroll effect
+        window.addEventListener('scroll', function() {
+            const header = document.querySelector('header');
+            const scrollPosition = window.scrollY;
+            
+            if (scrollPosition > 100) {
+                header.style.opacity = '0.9';
+            } else {
+                header.style.opacity = '1';
+            }
+        });
+        
+        // Animation on scroll
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, { threshold: 0.1 });
+        
+        document.querySelectorAll('section').forEach(section => {
+            section.style.opacity = '0';
+            section.style.transform = 'translateY(20px)';
+            section.style.transition = 'opacity 0.8s ease, transform 0.8s ease';
+            observer.observe(section);
+        });
+    </script>
+</body>
+</html>
